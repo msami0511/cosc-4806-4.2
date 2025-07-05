@@ -29,6 +29,25 @@ class Reminders extends Controller {
           $this->view('reminders/create');
       }
   }
+  public function edit($id) {
+      if (!isset($_SESSION['auth']) || $_SESSION['auth'] != 1) {
+          header('Location: /login');
+          exit;
+      }
+
+      $reminderModel = $this->model('Reminder');
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          $subject = trim($_POST['subject']);
+          $reminderModel->update_reminder($id, $subject);
+
+          header('Location: /reminders');
+          exit();
+      } else {
+          $reminder = $reminderModel->get_reminder_by_id($id);
+          $this->view('reminders/edit', ['reminder' => $reminder]);
+      }
+  }
+
 
 
   
