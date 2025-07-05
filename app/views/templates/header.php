@@ -43,6 +43,8 @@ if (!isset($_SESSION['auth'])) {
 <nav>
     <a href="#" class="brand">COSC 4806</a>
     <a href="/home">Home</a>
+    <a href="/reminders">Reminders</a>
+    <a href="/reminders/create">Create Reminder</a>
     <a href="/about">About Me</a>
     <a href="/logout">Logout</a>
 </nav>
